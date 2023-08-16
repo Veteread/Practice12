@@ -5,15 +5,16 @@ using UnityEngine;
 public class PauseController : MonoBehaviour
 
 {
-	private bool paused;
-	public AudioSource Sound;
-   public void PauseGame()
+    private bool paused;
+    public AudioSource Sound;
+
+    public void PauseGame()
    {
    		if(paused)
    		{
    	    	Time.timeScale = 1;
    	    	Sound.Play();
-   		}
+        }
     	else
     	{
    			Time.timeScale = 0;
