@@ -7,15 +7,19 @@ public class TrigerController : MonoBehaviour
 {
     public GameObject Ball;
     public GameObject Burst;
-    private SceneManagement sceneManagement;   
+    public Transform ballStart;
+    private Rigidbody rb;
+    private SceneManagement sceneManagement;
     private void Awake()
-    {        
-        sceneManagement = GetComponent<SceneManagement>();      
+    {
+        sceneManagement = GetComponent<SceneManagement>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Death()
-    {             
-        sceneManagement.ThisScene();
+    {
+        Ball.transform.position = ballStart.transform.position;
+        rb.isKinematic = false;
         Burst.SetActive(false);
         Ball.SetActive(true);
     }
@@ -23,6 +27,7 @@ public class TrigerController : MonoBehaviour
     {
         if (other.CompareTag("DeathTrigger"))
         {
+            rb.isKinematic = true;
             Ball.SetActive(false);
             Burst.transform.position = Ball.transform.position;
             Burst.SetActive(true);
@@ -30,11 +35,11 @@ public class TrigerController : MonoBehaviour
         }
     }
 
-       private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Finish"))
-        {           
-            sceneManagement.NextScene();         
-        }       
+        {
+            sceneManagement.NextScene();
+        }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathTrigger
   - Door
+  - BonusTeg
   layers:
   - Default
   - TransparentFX

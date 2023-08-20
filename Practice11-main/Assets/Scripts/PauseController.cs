@@ -18,7 +18,7 @@ public class PauseController : MonoBehaviour
     	else
     	{
    			Time.timeScale = 0;
-   			Sound.Pause();
+            Sound.Pause();
     	}
 
    		paused = !paused;
